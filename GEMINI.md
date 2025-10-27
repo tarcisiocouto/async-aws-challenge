@@ -54,3 +54,63 @@ The Lambda functions in the `lambda/` directory need to be deployed to AWS. The 
 *   Environment variables are used for configuration. See `app/settings.py` and `lambda/CreateProductProcessor.py`.
 *   The `Product` model is defined in `challenge/models.py`.
 *   The API endpoint is defined in `challenge/views.py` and `challenge/urls.py`.
+
+# commits.md
+
+### O Básico do Conventional Commits
+
+Este padrão propõe uma estrutura de commit simples e obrigatória:
+
+`<tipo>[escopo opcional]: <descrição>`
+
+**1. `<tipo>` (Obrigatório)**
+
+É uma palavra que descreve o tipo de alteração. Isso ajuda a categorizar a mudança e permite que ferramentas automatizadas gerem changelogs.
+
+| Tipo | Descrição |
+| --- | --- |
+| `feat` | Uma nova funcionalidade. |
+| `fix` | Uma correção de bug. |
+| `docs` | Alterações na documentação. |
+| `style` | Alterações de formatação (espaços, ponto e vírgula, etc.). |
+| `refactor` | Uma alteração de código que não corrige um bug nem adiciona uma funcionalidade. |
+| `test` | Adição de testes ou correção de testes existentes. |
+| `chore` | Alterações em ferramentas de build ou outras tarefas que não afetam o código-fonte (ex: `.gitignore`, dependências). |
+
+**2. `[escopo opcional]`**
+
+Fornece um contexto mais detalhado sobre a alteração. É uma palavra ou frase curta, geralmente entre parênteses, que identifica a parte do código ou módulo afetado.
+
+- `feat(auth)`: Adicionada funcionalidade de login.
+- `fix(api)`: Corrigido bug de autenticação na API.
+- `refactor(database)`: Refatorado o esquema do banco de dados.
+
+**3. `<descrição>` (Obrigatório)**
+
+Uma descrição curta e clara da alteração, escrita no imperativo (`"Adicionar funcionalidade"`, não `"Adicionei funcionalidade"`).
+
+---
+
+### Colocando em Prática
+
+Vamos ver alguns exemplos de commits bons e ruins.
+
+**❌ Comits ruins (sem padrão)**
+
+- `Corrigido bug` (não diz qual bug nem onde)
+- `Atualizado o código` (muito genérico)
+- `reajuste no index` (falta de contexto, difícil de pesquisar)
+
+**✅ Commits bons (seguindo o padrão)**
+
+- `feat(users): adicionar campo de data de nascimento`
+- `fix(api): corrigir erro 500 ao listar produtos sem imagem`
+- `docs: atualizar README com informações de instalação`
+- `refactor(views): separar lógica de negócios em services`
+
+### Dicas Extras
+
+- **Corpo do Commit**: Para mudanças mais complexas, adicione uma linha em branco após a descrição e escreva um parágrafo detalhado explicando o **motivo** da alteração, os **impactos** e as **decisões** tomadas.
+- **Quebras de Linha (`BREAKING CHANGE`)**: Se sua alteração quebra a compatibilidade com versões anteriores, use a palavra-chave `BREAKING CHANGE:` no corpo do commit para destacar isso.
+
+Adotar esse padrão de commit vai transformar seu histórico do Git de uma bagunça de mensagens sem sentido em um registro claro e pesquisável, facilitando a manutenção e a colaboração no projeto.
